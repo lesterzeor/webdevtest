@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getPromo } from "../util/helpers";
+import { Result } from "antd";
+import Loader from "./Loader";
 import moment from "moment";
-export default function Home() {
+export default function Promotion() {
   const [promotion, setpromotion] = useState(null);
   const [loading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
@@ -11,7 +13,6 @@ export default function Home() {
     setLoading(true);
     try {
       let promo = await getPromo(promoID);
-      console.log("got promo data back", promo);
       setpromotion(promo);
       setLoading(false);
     } catch (error) {
@@ -23,38 +24,51 @@ export default function Home() {
     getPromotion();
   }, []);
   return (
-    <div className="page">
+    <div className="promo_page">
       {loading ? (
-        <div>loading...</div>
+        <Loader />
       ) : promotion ? (
         <div className="pomotion_container">
+          <span className="mobile_title">
+            The Next Entry Deadline is <br />
+            {moment(promotion.drawings[0].entry_deadline).format(
+              "dddd, MMMM D, YYYY"
+            )}
+          </span>
           <img
             className="promo_img"
             alt="promotion art"
             src={require(`../${promotion.promo_image_url}`)}
           />
           <span className="promotion_name">{promotion.promotion_name}</span>
+          {/* <div className="promotion_body"> */}
           <span className="promotion_summary">{promotion.summary}</span>
           <span className="table_title">Drawing Schedule</span>
           <table className="custom_table drawing_table">
-            <tr>
-              <th>PRIZE</th>
-              <th>ENTRY DEADLINE</th>
-              <th>DRAWING DATE</th>
-            </tr>
-            {promotion.drawings.map((value, key) => {
-              return (
-                <tr key={key}>
-                  <td>{value.prize.replace("Cash Prize", "")}</td>
-                  <td>
-                    {moment(value.entry_deadline).format("dddd, MMMM D, YYYY")}
-                  </td>
-                  <td>
-                    {moment(value.drawing_date).format("dddd, MMMM D, YYYY")}
-                  </td>
-                </tr>
-              );
-            })}
+            <thead>
+              <tr>
+                <th>PRIZE</th>
+                <th>ENTRY DEADLINE</th>
+                <th>DRAWING DATE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {promotion.drawings.map((value, key) => {
+                return (
+                  <tr key={key}>
+                    <td>{value.prize.replace("Cash Prize", "")}</td>
+                    <td>
+                      {moment(value.entry_deadline).format(
+                        "dddd, MMMM D, YYYY"
+                      )}
+                    </td>
+                    <td>
+                      {moment(value.drawing_date).format("dddd, MMMM D, YYYY")}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
           <span className="promotion_summary entry_info">
             {promotion.entry_info}
@@ -67,22 +81,31 @@ export default function Home() {
             be deleted.
           </span>
           <table className="custom_table entries_table">
-            <tr>
-              <th>ENTRY NUMBER</th>
-              <th>DATE</th>
-            </tr>
-            {promotion.entries.map((value, key) => {
-              return (
-                <tr key={key}>
-                  <td>{value.entry_number}</td>
-                  <td>{moment(value.date).format("dddd, MMMM D, YYYY")}</td>
-                </tr>
-              );
-            })}
+            <thead>
+              <tr>
+                <th>ENTRY NUMBER</th>
+                <th>DATE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {promotion.entries.map((value, key) => {
+                return (
+                  <tr key={key}>
+                    <td>{value.entry_number}</td>
+                    <td>{moment(value.date).format("dddd, MMMM D, YYYY")}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
+          {/* </div> */}
         </div>
       ) : (
-        <div>Promotion not found</div>
+        <Result
+          status="404"
+          title="404"
+          subTitle="Sorry, this promotion does not exist."
+        />
       )}
     </div>
   );

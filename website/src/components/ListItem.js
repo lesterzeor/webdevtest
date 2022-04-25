@@ -1,7 +1,6 @@
 import React from "react";
-import image from "../images/fortune.jpg";
-import { Link } from "react-router-dom";
 import moment from "moment";
+import { Link } from "react-router-dom";
 export default function ListItem({ data, promoID }) {
   let { promotion_name, promo_image_url, summary, drawings } = data;
   return (
@@ -11,9 +10,11 @@ export default function ListItem({ data, promoID }) {
         alt="promotion art"
         src={require(`../${promo_image_url}`)}
       />
-      <Link to={`/promotion?promo=promo0${promoID + 1}`}>
-        <span className="promotion_name">{promotion_name}</span>
-      </Link>
+
+      <span className="promo_name">
+        <Link to={`?promo=promo0${promoID + 1}`}>{promotion_name} </Link>
+      </span>
+
       <br />
       <span className="promotion_summary">{summary}</span>
       <br />

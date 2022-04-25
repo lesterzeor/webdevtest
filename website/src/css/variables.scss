@@ -1,8 +1,8 @@
-$xs_mobile_min: 320px;
+$xs_mobile_min: 0px;
 $xs_mobile_max: 480px;
 
 @mixin mobile {
-    @media (min-width: #{$xs_mobile_min}) and (max-width: #{$xs_mobile_max}) {
-      @content;
-    }
+  @media (min-width: #{$xs_mobile_min}) and (max-width: #{$xs_mobile_max}) {
+    @content;
+  }
 }

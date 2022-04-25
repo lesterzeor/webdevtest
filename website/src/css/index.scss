@@ -2,63 +2,61 @@
 @import "./variables.scss";
 
 .app_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-image: linear-gradient(#cccccc, #ffffff);
-
-  .page {
-    max-width: 1000px;
-    width: 800px;
-  }
-}
-.promo_img {
-  width: 100%;
-  margin-bottom: 1rem;
-  filter: drop-shadow(4px 4px 4px black);
-}
-.list_item {
   background: white;
-  padding: 1rem;
-  margin: 1rem;
   font-family: Arial;
-
-  a {
-    text-decoration: none;
+  .promo_page {
+    background-image: linear-gradient(#cccccc, #ffffff);
+    @include mobile {
+      background-image: linear-gradient(#ffffff, #ffffff);
+    }
+  }
+  .pomotion_container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile_title {
+    display: none;
+    @include mobile {
+      width: 100%;
+      display: block;
+      font-size: 24px;
+      font-weight: bold;
+      color: #b20000;
+      text-align: center;
+      line-height: 24px;
+      margin-bottom: 1rem;
+    }
+  }
+  .promo_img {
+    width: 90%;
+    margin: 0 auto;
+    filter: drop-shadow(4px 4px 4px black);
+    @include mobile {
+      width: 100%;
+      filter: drop-shadow(3px 3px 2px black);
+    }
   }
   .promotion_name {
+    margin: 2rem 0 0.2rem;
     font-size: 24px;
-    color: #036dbe;
-    font-weight: bold;
-  }
-  .promotion_summary,
-  .promotion_drawing_date {
-    font-size: 14px;
-    color: #444444;
-  }
-}
-.pomotion_container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  font-family: Arial;
-  img {
-    margin: 1rem 1rem 2rem;
-  }
-  .promotion_name {
-    width: 100%;
-    font-size: 24px;
-    font-weight: bold;
     color: #000000;
+    @include mobile {
+      display: none;
+    }
   }
   .promotion_summary {
-    width: 100%;
-    font-size: 14px;
-    color: #444444;
+    font-size: 18px;
     line-height: 24px;
+    color: #444444;
+    @include mobile {
+      margin: 1rem 0.5rem 0;
+    }
   }
   .table_title {
-    margin: 3rem 0 0rem 0;
+    margin: 2rem 0 0;
     width: 100%;
     font-size: 18px;
     text-align: center;
@@ -70,30 +68,99 @@
   }
   .entries_subtext {
     text-align: center;
+    margin-bottom: 0.5rem;
+    @include mobile {
+      color: #b20000;
+      margin: 0 0 1rem;
+    }
   }
   .custom_table {
     width: 100%;
-    margin-top: 1rem;
-
+    margin: 1rem 0;
+    @include mobile {
+      width: 95%;
+      margin: 0 auto;
+    }
     tr th {
       color: white;
       background-color: #666666;
+      border: 2px solid white;
     }
     tr th:first-child {
       width: 20%;
-      border: 2px solid white;
     }
     tr td {
       text-align: center;
       border: 2px solid white;
-      background-color: #cccccc;
-    }
-  }
-  .entries_table {
-    tr th:first-child {
-      width: 30%;
+      background-color: #c7c7c7;
     }
   }
 }
+
 @include mobile {
+  .custom_table {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border: 0px solid #fff !important;
+  }
+  td {
+    border: none;
+    border: 0px !important;
+    border-bottom: 1px solid #e3e3e35e !important;
+    position: relative;
+    padding-left: 50%;
+    text-align: left !important;
+    height: 40px;
+  }
+  td:nth-last-child(1) {
+    border-bottom: 1px solid #adadad !important;
+  }
+  tr:nth-last-child(1) td:nth-last-child(1) {
+    border-bottom: 0px solid #adadad !important;
+  }
+  td:before {
+    position: absolute;
+    top: 0px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  .drawing_table {
+    td:nth-of-type(1):before {
+      content: "Prize";
+      font-weight: bold;
+    }
+    td:nth-of-type(2):before {
+      content: "ENTRY DEADLINE";
+      font-weight: bold;
+    }
+    td:nth-of-type(3):before {
+      content: "DRAWING DATE";
+      font-weight: bold;
+    }
+  }
+  .entries_table {
+    td:nth-of-type(1):before {
+      content: "ENTRY NUMBER";
+      font-weight: bold;
+    }
+    td:nth-of-type(2):before {
+      content: "DATE";
+      font-weight: bold;
+    }
+  }
 }
