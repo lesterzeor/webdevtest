@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.703f512c.css",
+    "main.js": "/static/js/main.fd14e073.js",
+    "static/media/mmmillionaire.jpg": "/static/media/mmmillionaire.baf0e7360f3a0f4d6b80.jpg",
+    "static/media/mmadness.jpg": "/static/media/mmadness.33a3f9e07b49cfe884ff.jpg",
+    "static/media/fortune.jpg": "/static/media/fortune.a52d533098a1b5f86796.jpg",
+    "index.html": "/index.html",
+    "main.703f512c.css.map": "/static/css/main.703f512c.css.map",
+    "main.fd14e073.js.map": "/static/js/main.fd14e073.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.703f512c.css",
+    "static/js/main.fd14e073.js"
+  ]
+}
