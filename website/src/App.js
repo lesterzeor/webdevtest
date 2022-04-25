@@ -1,8 +1,8 @@
 import "./css/App.css";
-import getData from "./util/webdevtest-data.json";
+import { data } from "./util/webdevtest-data.js";
 
 function App() {
-  console.log("getData", getData);
+  console.log("data", data);
   return <div className="App">application</div>;
 }
 
