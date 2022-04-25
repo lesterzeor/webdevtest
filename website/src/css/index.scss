@@ -1,8 +1,99 @@
+@import "~antd/dist/antd.css";
 @import "./variables.scss";
 
+.app_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-image: linear-gradient(#cccccc, #ffffff);
 
-@include mobile {
-    .App {
-        background-color: red;
+  .page {
+    max-width: 1000px;
+    width: 800px;
+  }
+}
+.promo_img {
+  width: 100%;
+  margin-bottom: 1rem;
+  filter: drop-shadow(4px 4px 4px black);
+}
+.list_item {
+  background: white;
+  padding: 1rem;
+  margin: 1rem;
+  font-family: Arial;
+
+  a {
+    text-decoration: none;
+  }
+  .promotion_name {
+    font-size: 24px;
+    color: #036dbe;
+    font-weight: bold;
+  }
+  .promotion_summary,
+  .promotion_drawing_date {
+    font-size: 14px;
+    color: #444444;
+  }
+}
+.pomotion_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: Arial;
+  img {
+    margin: 1rem 1rem 2rem;
+  }
+  .promotion_name {
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+  }
+  .promotion_summary {
+    width: 100%;
+    font-size: 14px;
+    color: #444444;
+    line-height: 24px;
+  }
+  .table_title {
+    margin: 3rem 0 0rem 0;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    color: #000000;
+  }
+  .entry_info {
+    margin-top: 1rem;
+  }
+  .entries_subtext {
+    text-align: center;
+  }
+  .custom_table {
+    width: 100%;
+    margin-top: 1rem;
+
+    tr th {
+      color: white;
+      background-color: #666666;
     }
+    tr th:first-child {
+      width: 20%;
+      border: 2px solid white;
+    }
+    tr td {
+      text-align: center;
+      border: 2px solid white;
+      background-color: #cccccc;
+    }
+  }
+  .entries_table {
+    tr th:first-child {
+      width: 30%;
+    }
+  }
+}
+@include mobile {
 }

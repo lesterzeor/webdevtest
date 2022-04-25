@@ -1,21 +1,17 @@
 import "./css/App.css";
 import Home from "./components/Home";
-import { data } from "./util/webdevtest-data.js";
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import Promotion from "./components/Promotion";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 function App() {
-  console.log("data", data);
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <div className="app_container">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/promotion" element={<Promotion />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
